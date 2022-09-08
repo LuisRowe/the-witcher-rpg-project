@@ -1,26 +1,29 @@
-import React from 'react';
+import React from 'react'
 
 class Home extends React.Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
-      name: '',
-    };
+      name: ''
+    }
   }
 
   handleChange = () => {
 
-  };
+  }
 
-  render() {
-    const { name } = this.state;
+  render () {
+    const { name } = this.state
     return (
       <form>
-        <input type="text" value={   name } />
-				<button type='submit'>Entrar</button>
+        <label>
+          Nome do jogo
+          <input type="text" value={name} />
+        </label>
+        <button type='submit'>Entrar</button>
       </form>
-    );
+    )
   }
 }
 
-export default Home;
+export default Home
