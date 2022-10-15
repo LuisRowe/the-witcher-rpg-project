@@ -6,7 +6,7 @@ function Elf() {
       <table className="table table-bordered table-striped">
         <thead>
           <tr>
-            <th scope="col" colspan="3"><h2>Vantagens: ELFO</h2></th>
+            <th scope="col" colspan="3"><h2>Vantagens: Elfo</h2></th>
           </tr>
           <tr>
             <th scope="col">Artístico</th>

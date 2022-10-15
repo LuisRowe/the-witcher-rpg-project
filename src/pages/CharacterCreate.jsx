@@ -1,29 +1,31 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import Dwarf from '../Component/Dwarf';
 import Elf from '../Component/Elf';
 import Human from '../Component/Human';
+import Witcher from '../Component/Witcher';
 
 function CharacterCreate() {
   const [race, setRace] = useState('Human');
 
-  useEffect(() => {console.log(race)},[race])
-
   return (
     <form>
       <label className="race-select">
-        Raça
+        <span>Raça: </span>
         <select 
           onChange={({target: {value}}) => setRace(value)}
         >
           <option value="Human">Humano</option>
           <option value="Elf">Elfo</option>
-          <option value="anao">Anão</option>
-          <option value="bruxo">Bruxo</option>
+          <option value="Dwarf">Anão</option>
+          <option value="Witcher">Bruxo</option>
         </select>
       </label>
       {race === "Human" && <Human />}
       {race === "Elf" && <Elf />}
+      {race === "Dwarf" && <Dwarf />}
+      {race === "Witcher" && <Witcher />}
     </form>
   )
 }

@@ -1,12 +1,28 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react'
 
 function Human() {
+  const [nome, setNome] = useState('');
+  const [regiao, setRegiao] = useState('Reinos do Norte');
+
+  const race = 'Humano';
+
+  useEffect(() => {
+    const charObj = {
+      nome,
+      race,
+      regiao,
+    };
+    console.log(charObj);
+  },[nome, regiao])
+
   return (
     <div className="race-chosed">
       <table className="table table-bordered table-striped">
         <thead>
           <tr>
-            <th scope="col" colspan="3"><h2>Vantagens: HUMANO</h2></th>
+            <th scope="col" colspan="3"><h2>Vantagens: Humano</h2></th>
           </tr>
           <tr>
             <th scope="col">Confiável</th>
@@ -22,6 +38,20 @@ function Human() {
           </tr>
         </tbody>
       </table>
+      <div>
+        <label>
+          <span>Nome: </span>
+          <input type="text" value={nome} onChange={({target: {value}}) => setNome(value)}/>
+        </label>
+        <hr />
+        <label>
+          <span>Origem: </span>
+          <select onChange={({target: {value}}) => setRegiao(value)}>
+            <option value="Reinos do Norte">Reinos do Norte</option>
+            <option value="Nilfgaard">Nilfgaard</option>
+          </select>
+        </label>
+      </div>
     </div>
   )
 }
