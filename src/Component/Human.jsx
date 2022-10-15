@@ -1,10 +1,15 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import Family from './Family';
+import Origin from './Origin';
 
 function Human() {
   const [nome, setNome] = useState('');
-  const [regiao, setRegiao] = useState('Reinos do Norte');
+  const [reino, setReino] = useState('Reinos do Norte');
+  const [regiao, setRegiao] = useState('');
+  const [familiaStatus, setFamiliaStatus] = useState('Vivos');
+  const [familia, setFamilia] = useState('');
 
   const race = 'Humano';
 
@@ -12,10 +17,13 @@ function Human() {
     const charObj = {
       nome,
       race,
+      reino,
       regiao,
+      familiaStatus,
+      familia,
     };
     console.log(charObj);
-  },[nome, regiao])
+  },[nome, reino, regiao, familiaStatus, familia])
 
   return (
     <div className="race-chosed">
@@ -45,12 +53,25 @@ function Human() {
         </label>
         <hr />
         <label>
-          <span>Origem: </span>
-          <select onChange={({target: {value}}) => setRegiao(value)}>
+          <span>Reino: </span>
+          <select onChange={({target: {value}}) => setReino(value)}>
             <option value="Reinos do Norte">Reinos do Norte</option>
             <option value="Nilfgaard">Nilfgaard</option>
           </select>
         </label>
+        <hr />
+        <Origin reino={reino} setRegiao={(value) => setRegiao(value)} />
+        <hr />
+        <label>
+          <span>Família: </span>
+          <select onChange={({target: {value}}) => setFamiliaStatus(value)}>
+            <option value="Vivos">Vivos</option>
+            <option value="Algo aconteceu">Algo aconteceu</option>
+          </select>
+        </label>
+        <hr />
+        <Family reino={reino} familiaStatus={familiaStatus} setFamilia={(value) => setFamilia(value)} />
+        <hr />
       </div>
     </div>
   )
